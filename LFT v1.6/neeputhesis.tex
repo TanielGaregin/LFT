@@ -1,0 +1,38 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{neepusetup}
+
+\begin{document}
+
+%封面
+\input{sector/a-cover}
+\input{sector/abstract-cn}     %中文摘要
+\input{sector/abstract-en}     %英文摘要+目录
+
+% 正文部分
+\input{sector/chapter01-intro}
+\input{sector/chapter02}
+\input{sector/chapter03}
+%\input{sector/chapter04}
+\input{sector/conclusion}
+
+%文后部分
+% 参考文献
+%***********
+%bib method1
+%\input{ref/ref-example.tex}
+%\bibliographystyle{gtb7714}
+
+%***********
+%bib method2
+\bibliography{ref/ref}
+
+
+
+%致谢
+\input{sector/thanks}
+
+%附录
+\input{sector/fulu-appendix.tex}
+
+\end{document}

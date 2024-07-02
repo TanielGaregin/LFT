@@ -1,0 +1,343 @@
+\section{一些引用和表格示例}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+\subsection{参考文献引用}
+I want to cite a new reference~\upcite{1961}, 
+and another cite trial is here\cite{1993},
+and another cite trial is here\citep{SVM003}.
+
+\subsection{右编号公式}
+带编号的公式需要放在equation环境中，同时可以设置公式引用标签。
+% 整个公式只有一个编号
+\begin{equation}\label{3} 
+    y = ax + b
+  \end{equation}
+
+\subsection{表格}
+正文中的表采用三线表，表题为五号宋体，表中为小五宋体。表题在表上方，居中
+
+表应具有自明性。为使表格简洁易读，尽可能采用三线表，如表~\ref{tab:three-line}。
+
+三条线可以使用 {booktabs} 宏包提供的命令生成。
+
+表使用的注在三线表左下方顶格编写，同用小五宋体。
+
+
+表格如果有附注，尤其是需要在表格中进行标注时，可以使用 {threeparttable} 宏包。
+
+
+\begin{table}[htbp]
+  \centering
+  \zihao{5}
+  \caption{三线表示例}
+  \vspace{-0.8em}
+  \begin{tabular}{ll}
+    \toprule
+    文件名          & 描述                         \\
+    \midrule
+    thuthesis.dtx   & 模板的源文件，包括文档和注释 \\
+    thuthesis.cls   & 模板文件                     \\
+    thuthesis-*.bst & BibTeX 参考文献表样式文件    \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:three-line}
+\end{table}
+
+  表格应该尽量占满整行空间，具体拉长方法如下：
+
+  1.使用tabularx形式的表格
+
+  下面是tabularx的一些使用事项
+
+  >\{\textbackslash raggedright \textbackslash arraybackslash\}X 代表左对齐
+
+  >\{\textbackslash centering \textbackslash arraybackslash\}X 代表居中对齐
+
+  >\{\textbackslash raggedleft \textbackslash arraybackslash\}X 代表左对齐
+
+  tabularx后的宽度部分还可以是0.5\textbackslash textwidth或者0.8\textbackslash  textwidth，或者干脆占满宽度\textbackslash textwidth
+
+  每一个 tabularx 表格至少要有一个 X 列！虽然兼容 l,c,r 写法，但纯 l,c,r 组成的 tabularx 表格会出错的！
+
+  单纯的应用X，会因latex内置的换行方式导致报错（Underfull \textbackslash hbox (badness 10000)，其中的1000代表换行方式导致的错误程度），
+  这时候可以在设置对齐方式的时候添加如上代表对齐方式的代码，如>\{\textbackslash raggedright \textbackslash arraybackslash\}X以解决因为对齐方式产生的报错。
+
+  tabularx 在搜索最佳列宽时必须多次生成表格，因此速度要慢得多。此外，表格地多次膨胀可能会破坏某些 TEX 结构。
+
+  
+\begin{table}[htbp]
+  \centering
+  \caption{Notation symbols used in this paper}
+  \begin{tabularx}{\textwidth}{ >{\raggedright\arraybackslash}p{5cm} L }  %错误的写法如右：\begin{tabularx}{\textwidth}{ p{5cm} L }
+  \toprule
+    Notations  & Definition \\
+  \midrule
+    $C$ & client set \\
+    $c\in C$ & an element in the client set \\
+    $S$ & server set \\
+    $s\in S$ & an element in the server set \\
+    $\mathbf{index}\gets \text{compute\_indices}(s)$ & compute the Bloom filter indices (returned as an array) related to a set element $s$\\
+    $\mathbf{BF}_{C}[\cdot]$ & Bloom filter array for the set $C$ where $BF_{C}[idx]$ with $idx\in \text{compute\_indices(c) for all } c\in C$ is set to 1, otherwise 0.\\
+    $\delta$   & threshold pulse function, \textit{i.e.}, returns 1 if the input value is above(below) a threshold, otherwise returns 0\\
+    $LWE_{\mathbf{s}}^{n,q}(m) \in \mathbb{Z}_q^n\times \mathbb{Z}_q $ & an LWE encryption of the message $m\in \mathbb{Z}_q$ w.r.t. \newline secret key $\mathbf{s}$ and lattice dimension $n$\\
+    $LWE_{\mathbf{z}}^{N,Q}(m) \in \mathbb{Z}_Q^N\times \mathbb{Z}_Q $ & an LWE encryption of the message $m\in \mathbb{Z}_Q$ w.r.t. \newline secret key $\mathbf{z}$ and lattice dimension $N$\\
+  \bottomrule
+  \end{tabularx}
+  \end{table}
+
+
+\begin{table}
+  \centering
+  \begin{tabularx}{\textwidth}{|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+      \hline 
+      - & Top gem & A & B & C & D \\ \hline 
+      Surface quality & Flawless & 90\% flawless, 10\% light defects and up to 2 defects & 70\% flawless, 30\% light defects and up to 2 deep defects & 40\% flawless, 60\% light defects and up to 10\% deep defects defects & More than 60\% light defects and up to 20\% deep defects defects \\ \hline 
+      Lustre & Excellent & Very good at least & Good at least & Medium at least & Low at least \\ \hline 
+  \end{tabularx} 
+\end{table}
+
+  \begin{table}[htbp]
+    \centering
+    \caption{宝马i3电机的主要参数}
+    \vspace{-5pt}
+    \begin{spacing}{1.3}
+        \begin{tabularx}{\textwidth}{
+                >{\centering\arraybackslash}X
+                >{\centering\arraybackslash}X
+                >{\centering\arraybackslash}X
+                >{\centering\arraybackslash}X}
+
+        \toprule
+        参数& 数值& 参数& 数值\\
+        \midrule
+        额定功率/kW & 40    & 极数      & 12        \\
+        额定电压/V  & 360   & 铁心长度/mm & 132.3     \\
+        频率/Hz   & 50    & 定子槽数    & 72        \\
+        额定转速/A  & 4000  & 定子槽型    & 平底槽       \\
+        定子外径/mm & 242.1 & 铁心材料    & B20AT1500 \\
+        定子内径/mm & 180   & 磁钢牌号    & 38UH      \\
+        转子外径/mm & 178.6 & 绕组接法    & Y        \\
+        \bottomrule
+        \end{tabularx}
+    \end{spacing}
+\end{table}
+
+
+  2.调整表格长度还可以在具体的表格中使用p/m/b\{xx cm\}+\textbackslash centering 解决
+
+  3.还有一种调整方法是在表头每格用box规定好宽度
+  \setlength{\textwidth}{11.92cm}%定义文本可用宽度14.66cm=415.56pt=5.77165in
+  \begin{center}
+    \centering
+    \begin{tabular}{ccccc}
+      \toprule[1.5pt]
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %\textwidth 是每一行的宽度.[0.1\textwidth]设定单元格宽度
+      % [c]  单元格文本居中对齐
+      % {name} 单元格内容
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \makebox[0.1\textwidth][c]{name} & \makebox[0.2\textwidth][c]{taskA} & \makebox[0.1\textwidth][c]{taskB}
+                                       & \makebox[0.4\textwidth][c]{taskC} & \makebox[0.2\textwidth][c]{taskD}             \\
+      \midrule[1pt]
+      xiaowang                         & 80                                & 50                                & 70  & 90  \\
+      laowang                          & 90                                & 70                                & 80  & 100 \\
+      gblaowang                        & 100                               & 100                               & 100 & 100 \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+
+  \begin{center}
+    \centering
+    \begin{tabular}{ccccc}
+      \toprule[1.5pt]
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %\textwidth 是每一行的宽度.[0.1\textwidth]设定单元格宽度
+      % [c]  单元格文本居中对齐
+      % {name} 单元格内容
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      name \hfill & taskA \hfill & taskB \hfill & taskC \hfill  & taskD \hfill              \\
+      \midrule[1pt]
+      xiaowang                         & 80                                & 50                                & 70  & 90  \\
+      laowang                          & 90                                & 70                                & 80  & 100 \\
+      gblaowang                        & 100                               & 100                               & 100 & 100 \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+
+  经实验，如果需要调到正好符合页边距，需要表头所有单元格的textwidth倍数总和为0.747-0.84。调整好表格宽度的形式如下：
+
+  \begin{center}
+    \centering
+    \begin{tabular}{ccccc}
+      \toprule[1.5pt]
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %\textwidth 是每一行的宽度.[0.1\textwidth]设定单元格宽度
+      % [c]  单元格文本居中对齐
+      % {name} 单元格内容
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \makebox[0.1\textwidth][c]{name} & \makebox[0.1\textwidth][c]{taskA} & \makebox[0.3\textwidth][c]{taskB}
+                                       & \makebox[0.1\textwidth][c]{taskC} & \makebox[0.4\textwidth][c]{taskD}             \\
+      \midrule[1pt]
+      xiaowang                         & 80                                & 50                                & 70  & 90  \\
+      laowang                          & 90                                & 70                                & 80  & 100 \\
+      gblaowang                        & 100                               & 100                               & 100 & 100 \\
+      \bottomrule[1.5pt]
+    \end{tabular}
+  \end{center}
+
+
+  \begin{table}[htbp]
+    \centering
+    \caption{Somewhat long long long caption which is long}
+    %\medskip
+    \vspace{-0.7em}
+    \label{tab2}
+    \begin{tabularwithnotes}{lc}
+     {
+      \tnote[a]{Short footnote}
+      \tnote[b]{Short footnote}
+     }
+    \toprule
+    \makebox[0.5\textwidth][c]{Header 1} & \makebox[0.5\textwidth][c]{Header 2} \\
+    \midrule
+    foo\tmark[a] & 1\tmark[b] \\
+    \bottomrule
+    \end{tabularwithnotes}
+    \end{table}
+
+    表格参数
+    
+    table 后面加*表示双栏表格，如\textbackslash begin\{table*\}...\textbackslash end\{table*\}。
+    
+    表格中常用选项[htbp]是浮动格式：
+    
+    h当前位置。将图形放置在正文文本中给出该图形环境的地方。如果本页所剩的页面不够，这一参数将不起作用。
+    
+    t顶部。将图形放置在页面的顶部。
+    
+    b底部。将图形放置在页面的底部。
+    
+    p浮动页。将图形放置在一只允许有浮动对象的页面上。
+    
+    一般使用[htb]这样的组合，只用[h]是没有用的。这样组合的意思就是latex会尽量满足排在前面的浮动格式，就是[h-t-b]这个顺序，让排版的效果尽量好。
+    
+    
+    [!h] 只是试图放在当前位置。如果页面剩下的部分放不下，还是会跑到下一页的。一般页言，用 [!h] 选项经常会出现不能正确放置的问题，所以常用 [ht]、[htbp] 等。
+    
+    如果你确实需要把图片放在当前位置，不容改变，可以用float宏包的[H]选项。不过如果这样做，出现放不下的问题时需要手工调整。
+    
+    如某个表需要转页接排，可以使用 {longtable} 宏包，需要在随后的各页上重复表的编号。
+    
+
+    \begin{longtable}[htbp]{cccc}
+        \caption{跨页长表格的表题}
+        \zihao{-5}
+        \vspace{-0.8em}
+        \label{tab:longtable} \\
+        \toprule
+        \makebox[0.25\textwidth][c]{表头 1} & \makebox[0.25\textwidth][c]{表头 2} & \makebox[0.25\textwidth][c]{表头 3} & \makebox[0.25\textwidth][c]{表头 4} \\
+        \midrule
+      \endfirsthead
+        \caption*{\raggedleft 续表~\thetable\quad
+        %\hspace{9.5em}          %调整“续表XX”位置在表格右上方
+        } \\
+        \toprule
+        \makebox[0.22\textwidth][c]{表头 1} & \makebox[0.22\textwidth][c]{表头 2} & \makebox[0.22\textwidth][c]{表头 3} & \makebox[0.22\textwidth][c]{表头 4} \\
+        \midrule
+      \endhead
+        \bottomrule
+      \endfoot
+      Row 1  & & & \\
+      Row 2  & & & \\
+      Row 3  & & & \\
+      Row 4  & & & \\
+      Row 5  & & & \\
+      Row 6  & & & \\
+      Row 7  & & & \\
+      Row 8  & & & \\
+      Row 9  & & & \\
+      Row 10 & & & \\
+    \end{longtable}
+
+    \subsubsection{合并水平单元格}
+
+      Latex中合并表格中的水平单元格的命令是\textbackslash multicolumn\{n\}\{fixup\}\{text\}。其中n指合并的单元格个数，fixup指对齐方式，text是里面的文本。编辑如下代码，合并第1行的第2,3个单元格。
+      在没有使用tabularx宏包的表格中可以使用
+
+    \begin{center}
+      \begin{tabular}{|r|c|l|}
+        \hline
+        ab&\multicolumn{2}{|c|}{cdef}\\
+        \hline
+        AB&CD&EF\\
+        \hline
+        gh&ij&kl\\
+        \hline
+        \makecell[r]{Student \\ Number}&IJ&KL\\
+        \hline
+      \end{tabular}
+    \end{center}
+
+    \subsubsection{合并竖直单元格}
+
+    合并竖直单元格的命令是\textbackslash multirow\{n\}\{*\}\{text\}，含义如上，只是需要加上中间那个\{*\}，不加的话不会通过编译，具体原因不详。作为演示，我们合并第一列的所有行。由于第一列被合并，因此下面几行的第一列中不再有内容，也即第一个\&之前不再有内容。
+      
+    \begin{center}
+      \begin{tabular}{|r|c|l|}
+        \hline
+        \multirow{4}{*}{ab} & \multicolumn{2}{|c|}{cdef}\\
+                            \cline{2-3}
+                            & CD & EF\\
+                            \cline{2-3}
+                            & ij & kl\\
+                            \cline{2-3}
+                            & IJ & KL\\
+        \hline
+      \end{tabular}
+    \end{center}
+
+      \subsubsection{同时合并行和列}
+      如果需要同时合并行和列，只需要将以上两个命令合起来使用便可。例如需要合并左上角的第1,2行和1,2列
+
+      \begin{center}
+      \begin{tabular}{|r|c|l|}
+        \hline
+        \multicolumn{2}{|c|}{\multirow{2}{*}{ab}} &cd\\
+                                                  \cline{3-3}
+        \multicolumn{2}{|c|}{}                    &EF\\
+        \hline
+        gh                    &ij                 &kl\\
+        \hline
+        GH                    &IJ                 &KL\\
+        \hline
+      \end{tabular}
+    \end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
